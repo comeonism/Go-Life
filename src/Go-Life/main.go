@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"io/ioutil"
 	"math"
+	"time"
 )
 
 const size int = 3
@@ -17,6 +18,12 @@ type Cell struct {
 
 func main() {
 	initialize()
+
+	// game loop that refreshes every half a second
+	timer := time.Tick(500 * time.Millisecond)
+	for tick := range timer {
+		fmt.Println(tick, "tock")
+	}
 }
 
 func initialize() {
