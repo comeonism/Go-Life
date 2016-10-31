@@ -11,6 +11,7 @@ const size int = 23
 
 var grid [size][size]bool
 var nextGrid [size][size]bool
+var cycleNo int = 1
 
 func main() {
 	initialize()
@@ -21,6 +22,7 @@ func main() {
 	timer := time.Tick(1000 * time.Millisecond)
 	for tick := range timer {
 		_ = tick
+		cycleNo++
 
 		evolve()
 		grid = nextGrid
@@ -160,6 +162,8 @@ func evolveCell(numberOfAliveNeighbours int, cellAlive, nextGridCell *bool) {
 //////////////////////////////////////
 
 func printGrid() {
+	fmt.Println("===========", cycleNo, "===========")
+
 	for i := 0; i < size; i++ {
 		for j := 0; j < size; j++ {
 			if grid[i][j] == true {
@@ -170,6 +174,4 @@ func printGrid() {
 		}
 		fmt.Println("")
 	}
-
-	fmt.Println("=======================")
 }
