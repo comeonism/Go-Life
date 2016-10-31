@@ -58,7 +58,7 @@ func stringToGridArray(gridFileContents string) {
 	for _, character := range gridFileContents {
 
 		if string(character) == "0" || string(character) == "1" {
-			processCell(validCharacterCounter/size, int(math.Mod(float64(validCharacterCounter), float64(size))), string(character) == "1")
+			initCell(validCharacterCounter/size, int(math.Mod(float64(validCharacterCounter), float64(size))), string(character) == "1")
 		} else {
 			validCharacterCounter--
 		}
@@ -67,7 +67,7 @@ func stringToGridArray(gridFileContents string) {
 	}
 }
 
-func processCell(x, y int, alive bool) {
+func initCell(x, y int, alive bool) {
 	grid[x][y] = alive
 	nextGrid[x][y] = alive // for the initialization nextGrid == grid
 }
